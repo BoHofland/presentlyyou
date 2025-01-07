@@ -1,19 +1,23 @@
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
 import { IconSymbol } from '@/components/ui/IconSymbol';
+import { router } from 'expo-router';
 
-// Definieer het type voor de iconen die we gebruiken
 type IconName = "gift.fill" | "doc.fill" | "headphones" | "gearshape.fill" | 
                 "person.fill" | "eye.fill" | "message.fill" | "doc.text.fill";
 
 export default function ProfileScreen() {
-  const userName = "Bo"; // Dit zou normaal uit je app's state/storage komen
+  const userName = "John";
 
-  const menuItems: { icon: IconName; label: string }[] = [
+  const menuItems: { icon: IconName; label: string; onPress?: () => void }[] = [
     { icon: "gift.fill", label: "Bestellingen" },
     { icon: "doc.fill", label: "Facturen" },
     { icon: "headphones", label: "Klantenservice" },
     { icon: "gearshape.fill", label: "Instellingen" },
-    { icon: "person.fill", label: "Mijn gegevens" },
+    { 
+      icon: "person.fill", 
+      label: "Mijn gegevens",
+      onPress: () => router.push('/mydetails')
+    },
     { icon: "eye.fill", label: "Bestellingen" },
     { icon: "message.fill", label: "Help de app te verbeteren" },
     { icon: "doc.text.fill", label: "Voorwaarden" },
@@ -31,7 +35,11 @@ export default function ProfileScreen() {
       <ScrollView style={styles.scrollView}>
         <View style={styles.menuContainer}>
           {menuItems.map((item, index) => (
-            <TouchableOpacity key={index} style={styles.menuItem}>
+            <TouchableOpacity 
+              key={index} 
+              style={styles.menuItem}
+              onPress={item.onPress}
+            >
               <IconSymbol name={item.icon} size={24} color="#3B82F6" />
               <Text style={styles.menuLabel}>{item.label}</Text>
             </TouchableOpacity>
