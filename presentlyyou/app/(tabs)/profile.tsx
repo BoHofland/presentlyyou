@@ -6,7 +6,7 @@ type IconName = "gift.fill" | "doc.fill" | "headphones" | "gearshape.fill" |
                 "person.fill" | "eye.fill" | "message.fill" | "doc.text.fill";
 
 export default function ProfileScreen() {
-  const userName = "John";
+  const userName = "Bo";
 
   const menuItems: { icon: IconName; label: string; onPress?: () => void }[] = [
     { icon: "gift.fill", label: "Bestellingen" },
@@ -16,7 +16,7 @@ export default function ProfileScreen() {
     { 
       icon: "person.fill", 
       label: "Mijn gegevens",
-      onPress: () => router.push('/mydetails')
+      onPress: () => router.push('/(tabs)/mydetails')
     },
     { icon: "eye.fill", label: "Bestellingen" },
     { icon: "message.fill", label: "Help de app te verbeteren" },
